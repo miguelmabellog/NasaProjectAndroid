@@ -37,5 +37,7 @@ class ApodServiceInstrumentedTest {
         assertTrue(response.title.isNotBlank())
         assertTrue(response.description.isNotBlank())
         assertTrue(response.id.isNotBlank())
+        assertTrue(response.date.isNotBlank())
+        assertTrue(response.isAvailable)
     }
 }

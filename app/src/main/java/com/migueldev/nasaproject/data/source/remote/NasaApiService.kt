@@ -10,5 +10,14 @@ interface NasaApiService {
         @Query("api_key") apiKey: String,
         @Query("date") date: String? = null
     ): NasaResponseDto
+
+    @GET("planetary/apod")
+    suspend fun getAstronomyPicturesInRange(
+        @Query("api_key") apiKey: String,
+        @Query("start_date") startDate: String,
+        @Query("end_date") endDate: String? = null
+    ): List<NasaResponseDto>
 }
+
+
 

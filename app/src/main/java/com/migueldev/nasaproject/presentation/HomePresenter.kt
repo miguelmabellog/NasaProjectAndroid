@@ -13,7 +13,7 @@ import javax.inject.Inject
 class HomePresenter @Inject constructor(
     private val getFeaturedItemUseCase: GetFeaturedItemUseCase
 ) {
-    var state: HomeState by mutableStateOf<HomeState>(HomeState.Loading)
+    var state: HomeState by mutableStateOf(HomeState())
         private set
 
     private var loadJob: Job? = null
@@ -22,11 +22,17 @@ class HomePresenter @Inject constructor(
         loadJob?.cancel()
         loadJob = CoroutineScope(Dispatchers.IO).launch {
             try {
-                state = HomeState.Loading
+                state = state.copy(isLoading = true, errorMessage = null)
                 val item = getFeaturedItemUseCase()
-                state = HomeState.Loaded(item)
+                state = state.copy(
+                    isLoading = false,
+                    items = listOf(item)
+                )
             } catch (e: Exception) {
-                state = HomeState.Error(e.message ?: "Unknown error occurred")
+                state = state.copy(
+                    isLoading = false,
+                    errorMessage = e.message ?: "Unknown error occurred"
+                )
             }
         }
     }

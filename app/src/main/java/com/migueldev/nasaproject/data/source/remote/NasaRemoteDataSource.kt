@@ -11,5 +11,9 @@ class NasaRemoteDataSource @Inject constructor(
     suspend fun getAstronomyPictureOfTheDay(apiKey: String, date: String? = null): NasaResponseDto {
         return apiService.getAstronomyPictureOfTheDay(apiKey, date)
     }
+    
+    suspend fun getAstronomyPicturesInRange(apiKey: String, startDate: String, endDate: String? = null): List<NasaResponseDto> {
+        return apiService.getAstronomyPicturesInRange(apiKey, startDate, endDate)
+    }
 }
 
