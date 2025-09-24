@@ -27,7 +27,8 @@ import com.migueldev.nasaproject.presentation.components.NasaItemCard
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
+    onItemClick: (String) -> Unit = {}
 ) {
     val state by viewModel.state.collectAsState()
     
@@ -74,7 +75,10 @@ fun HomeScreen(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     items(state.items) { item ->
-                        NasaItemCard(item = item)
+                        NasaItemCard(
+                            item = item,
+                            onClick = { onItemClick(item.id) }
+                        )
                     }
                 }
             }

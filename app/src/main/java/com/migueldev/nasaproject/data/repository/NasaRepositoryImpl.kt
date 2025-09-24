@@ -22,6 +22,7 @@ class NasaRepositoryImpl @Inject constructor(
             title = response.title,
             description = response.explanation,
             date = response.date,
+            imageUrl = response.url,
             isAvailable = true
         )
     }
@@ -42,6 +43,7 @@ class NasaRepositoryImpl @Inject constructor(
                     title = response.title,
                     description = response.explanation,
                     date = response.date,
+                    imageUrl = response.url,
                     isAvailable = true
                 )
             }
@@ -70,6 +72,7 @@ class NasaRepositoryImpl @Inject constructor(
                     title = response.title,
                     description = response.explanation,
                     date = response.date,
+                    imageUrl = response.url,
                     isAvailable = true
                 ))
             } catch (e: Exception) {

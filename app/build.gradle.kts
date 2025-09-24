@@ -83,6 +83,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.dagger.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil.compose)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.retrofit2)
     implementation(libs.retrofit2.converter.gson)

@@ -39,5 +39,6 @@ class ApodServiceInstrumentedTest {
         assertTrue(response.id.isNotBlank())
         assertTrue(response.date.isNotBlank())
         assertTrue(response.isAvailable)
+        // La imageUrl puede ser null, así que no la validamos
     }
 }
