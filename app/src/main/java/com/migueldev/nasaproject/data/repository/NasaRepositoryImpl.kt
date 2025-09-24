@@ -90,4 +90,17 @@ class NasaRepositoryImpl @Inject constructor(
         
         return items
     }
+    
+    override suspend fun getItemByDate(date: String): NasaItem {
+        val response = remoteDataSource.getAstronomyPictureOfTheDay(apiKey, date)
+        
+        return NasaItem(
+            id = response.date,
+            title = response.title,
+            description = response.explanation,
+            date = response.date,
+            imageUrl = response.url,
+            isAvailable = true
+        )
+    }
 }
