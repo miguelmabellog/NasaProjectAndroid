@@ -13,3 +13,18 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Build directories
+**/build/
+**/tmp/
+**/intermediates/
+**/outputs/
+**/generated/
+
+# Cache files
+**/*.bin
+**/kapt3/
+**/incApCache/
+
+# Cursor resources (if they're large)
+.cursor/resources/
