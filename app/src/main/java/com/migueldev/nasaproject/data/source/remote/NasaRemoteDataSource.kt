@@ -1,6 +1,7 @@
 package com.migueldev.nasaproject.data.source.remote
 
-import com.migueldev.nasaproject.data.source.remote.dto.NasaResponseDto
+import com.migueldev.nasaproject.core.network.api.NasaApiService
+import com.migueldev.nasaproject.core.network.dto.NasaResponseDto
 import javax.inject.Inject
 import javax.inject.Singleton
 

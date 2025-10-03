@@ -21,4 +21,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "NasaProject"
 include(":app")
+include(":core-common")
+include(":core-network")
+include(":core-database")
+include(":feature-photo-of-day")
+include(":feature-asteroids")
  

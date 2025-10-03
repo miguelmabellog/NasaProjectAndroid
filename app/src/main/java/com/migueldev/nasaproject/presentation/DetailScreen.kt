@@ -1,5 +1,6 @@
 package com.migueldev.nasaproject.presentation
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,14 +10,19 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -29,6 +35,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter
@@ -52,10 +60,26 @@ fun DetailScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Detalle APOD") },
+                title = { 
+                    Text(
+                        text = "Astronomy Picture",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Medium,
+                        color = Color.White
+                    )
+                },
+                navigationIcon = {
+                    IconButton(onClick = onNavigateBack) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "Back",
+                            tint = Color.White
+                        )
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = Color(0xFF1A1A1A),
+                    titleContentColor = Color.White
                 )
             )
         }
@@ -65,22 +89,24 @@ fun DetailScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(paddingValues),
+                        .padding(paddingValues)
+                        .background(Color(0xFF1A1A1A)),
                     contentAlignment = Alignment.Center
                 ) {
-                    CircularProgressIndicator()
+                    CircularProgressIndicator(color = Color(0xFFE31E24))
                 }
             }
             is DetailState.Error -> {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(paddingValues),
+                        .padding(paddingValues)
+                        .background(Color(0xFF1A1A1A)),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
                         text = currentState.message,
-                        color = MaterialTheme.colorScheme.error,
+                        color = Color(0xFFFF5252),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -91,6 +117,7 @@ fun DetailScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(paddingValues)
+                        .background(Color(0xFF1A1A1A))
                 )
             }
         }
@@ -104,92 +131,93 @@ private fun DetailContent(
 ) {
     Column(
         modifier = modifier
-            .padding(16.dp)
             .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // Fecha
-        Text(
-            text = item.date,
-            style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.primary,
-            fontWeight = FontWeight.Medium
-        )
-        
-        // Título
-        Text(
-            text = item.title,
-            style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Bold
-        )
-        
-        // Imagen
+        // Main Image
         if (item.imageUrl != null && item.isAvailable) {
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-            ) {
-                AsyncImage(
-                    model = item.imageUrl,
-                    contentDescription = item.title,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(300.dp),
-                    contentScale = ContentScale.Crop,
-                    placeholder = rememberAsyncImagePainter(
-                        model = "https://via.placeholder.com/400x300/cccccc/666666?text=Cargando..."
-                    ),
-                    error = rememberAsyncImagePainter(
-                        model = "https://via.placeholder.com/400x300/ffcccc/cc0000?text=Error+al+cargar"
-                    )
+            AsyncImage(
+                model = item.imageUrl,
+                contentDescription = item.title,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(300.dp),
+                contentScale = ContentScale.Crop,
+                placeholder = rememberAsyncImagePainter(
+                    model = "https://via.placeholder.com/400x300/333333/666666?text=Loading..."
+                ),
+                error = rememberAsyncImagePainter(
+                    model = "https://via.placeholder.com/400x300/333333/ff6666?text=Error"
                 )
-            }
+            )
         } else if (!item.isAvailable) {
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(300.dp)
+                    .background(Color(0xFF333333)),
+                contentAlignment = Alignment.Center
             ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(300.dp)
-                        .padding(16.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = "Imagen no disponible",
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.error,
-                        textAlign = TextAlign.Center
-                    )
-                }
+                Text(
+                    text = "Image not available",
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = Color(0xFFFF5252),
+                    textAlign = TextAlign.Center
+                )
             }
         }
         
-        // Descripción
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        // Content
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            Column(
-                modifier = Modifier.padding(16.dp)
+            // Date
+            Text(
+                text = item.date,
+                style = MaterialTheme.typography.labelLarge,
+                color = Color(0xFFE31E24),
+                fontWeight = FontWeight.Medium
+            )
+            
+            // Title
+            Text(
+                text = item.title,
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                lineHeight = 28.sp
+            )
+            
+            // Description
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = Color(0xFF2A2A2A)),
+                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                shape = RoundedCornerShape(12.dp)
             ) {
-                Text(
-                    text = "Descripción",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = if (item.isAvailable) {
-                        item.description
-                    } else {
-                        "No hay descripción disponible para esta fecha"
-                    },
-                    style = MaterialTheme.typography.bodyLarge,
-                    lineHeight = MaterialTheme.typography.bodyLarge.lineHeight
-                )
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Text(
+                        text = "Explanation",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFFE31E24)
+                    )
+                    
+                    Text(
+                        text = if (item.isAvailable) {
+                            item.description
+                        } else {
+                            "No description available for this date"
+                        },
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color(0xFFCCCCCC),
+                        lineHeight = 24.sp
+                    )
+                }
             }
         }
     }
