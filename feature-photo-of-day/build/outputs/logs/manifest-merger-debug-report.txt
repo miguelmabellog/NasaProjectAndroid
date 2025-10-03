@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/miguel/AndroidStudioProjects/NasaProject/feature-photo-of-day/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest16859829989914051583.xml:2:13-83
+INJECTED from /Users/miguel/AndroidStudioProjects/NasaProject/feature-photo-of-day/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest16859829989914051583.xml:2:13-83
+	package
+		INJECTED from /Users/miguel/AndroidStudioProjects/NasaProject/feature-photo-of-day/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest16859829989914051583.xml
+	xmlns:android
+		ADDED from /Users/miguel/AndroidStudioProjects/NasaProject/feature-photo-of-day/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest16859829989914051583.xml:2:23-81
+uses-sdk
+INJECTED from /Users/miguel/AndroidStudioProjects/NasaProject/feature-photo-of-day/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest16859829989914051583.xml reason: use-sdk injection requested
+INJECTED from /Users/miguel/AndroidStudioProjects/NasaProject/feature-photo-of-day/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest16859829989914051583.xml
+INJECTED from /Users/miguel/AndroidStudioProjects/NasaProject/feature-photo-of-day/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest16859829989914051583.xml
+	android:targetSdkVersion
+		INJECTED from /Users/miguel/AndroidStudioProjects/NasaProject/feature-photo-of-day/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest16859829989914051583.xml
+	android:minSdkVersion
+		INJECTED from /Users/miguel/AndroidStudioProjects/NasaProject/feature-photo-of-day/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest16859829989914051583.xml
