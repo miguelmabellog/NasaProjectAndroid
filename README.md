@@ -27,6 +27,37 @@ feature based architecture<br>
 **Clean architecture:** Data, Domain, Presentation<br>
 MVVM<br>
 Modularization<br>
-<img src="images/three.png" alt="Diagrama del sistema" width="300" height="200">
+🧱 Feature-Based Clean Architecture
+
+📱 App
+│
+├── Feature: feature 1
+│   ├── Presentation
+│   │   ├── View
+│   │   └── ViewModel
+│   │
+│   ├── Domain
+│   │   ├── Entities
+│   │   ├── UseCases
+│   │   └── Repository (Interface)
+│   │
+│   └── Data
+│       ├── RepositoryImpl
+│       ├── DataSource
+│       │   ├── Remote
+│       │   └── Local
+│       └── Mappers
+│
+├── Feature: Feature 2
+│   ├── Presentation
+│   ├── Domain
+│   └── Data
+│
+└── Core
+    ├── Network
+    ├── Storage
+    ├── Common
+    └── Utils
+
 
 
