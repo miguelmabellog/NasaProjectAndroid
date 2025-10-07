@@ -66,10 +66,8 @@ android {
 }
 
 hilt {
-    enableAggregatingTask = false
+    enableAggregatingTask = true
 }
-
-//
 
 dependencies {
     // Core modules
@@ -79,7 +77,7 @@ dependencies {
     
     // Feature modules
     implementation(project(":feature-photo-of-day"))
-    implementation(project(":feature-asteroids"))
+    // implementation(project(":feature-asteroids"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -91,26 +89,17 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.coil.compose)
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
-    
-    // Network dependencies
-    implementation(libs.retrofit2)
-    implementation(libs.retrofit2.converter.gson)
-    implementation(libs.okhttp.logging.interceptor)
-    
-    // Image loading
-    implementation(libs.coil.compose)
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    kaptAndroidTest(libs.dagger.hilt.compiler)
-    androidTestImplementation(libs.dagger.hilt.testing)
-    testImplementation(libs.okhttp.mockwebserver)
-    testImplementation(libs.kotlinx.coroutines.test)
+    // kaptAndroidTest(libs.dagger.hilt.compiler)
+    // androidTestImplementation(libs.dagger.hilt.testing)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }

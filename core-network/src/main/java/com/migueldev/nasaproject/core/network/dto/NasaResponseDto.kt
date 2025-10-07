@@ -16,6 +16,8 @@ data class NasaResponseDto(
     @SerializedName("title")
     val title: String,
     @SerializedName("url")
-    val url: String
+    val url: String,
+    @SerializedName("copyright")
+    val copyright: String? = null
 )
 
