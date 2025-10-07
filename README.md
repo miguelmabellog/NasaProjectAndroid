@@ -14,7 +14,7 @@ Nasa Project based on api https://api.nasa.gov/<br>
 show image of day<br>
 show close astheroids<br>
 
-## Current thechnology
+## thechnology
 
 Kotlin<br>
 Compose<br>
@@ -27,37 +27,44 @@ feature based architecture<br>
 **Clean architecture:** Data, Domain, Presentation<br>
 MVVM<br>
 Modularization<br>
-🧱 Feature-Based Clean Architecture
 
-📱 App
+
+### 🧩 Feature-Based Clean Architecture
+
+```
+App
 │
-├── Feature: feature 1
-│   ├── Presentation
-│   │   ├── View
-│   │   └── ViewModel
+├── features
+│   ├── search
+│   │   ├── presentation
+│   │   │   ├── view
+│   │   │   └── viewmodel
+│   │   │
+│   │   ├── domain
+│   │   │   ├── entities
+│   │   │   ├── usecases
+│   │   │   └── repository (interface)
+│   │   │
+│   │   └── data
+│   │       ├── repositoryimpl
+│   │       ├── datasource
+│   │       │   ├── remote
+│   │       │   └── local
+│   │       └── mappers
 │   │
-│   ├── Domain
-│   │   ├── Entities
-│   │   ├── UseCases
-│   │   └── Repository (Interface)
-│   │
-│   └── Data
-│       ├── RepositoryImpl
-│       ├── DataSource
-│       │   ├── Remote
-│       │   └── Local
-│       └── Mappers
+│   └── profile
+│       ├── presentation
+│       ├── domain
+│       └── data
 │
-├── Feature: Feature 2
-│   ├── Presentation
-│   ├── Domain
-│   └── Data
-│
-└── Core
-    ├── Network
-    ├── Storage
-    ├── Common
-    └── Utils
+└── core
+    ├── network
+    ├── storage
+    ├── common
+    └── utils
+```
+
+
 
 
 
