@@ -27,4 +27,6 @@ feature based architecture<br>
 **Clean architecture:** Data, Domain, Presentation<br>
 MVVM<br>
 Modularization<br>
+<img src="images/three.png" alt="Diagrama del sistema" width="300" height="200">
+
 
