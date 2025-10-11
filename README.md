@@ -10,6 +10,8 @@ Practice: Kotlin corutines, hillt DI, Modularization <br>
 
 
 ## main feature
+This app is based on https://api.nasa.gov/
+
 <table>
   <tr>
     <td align="center">
