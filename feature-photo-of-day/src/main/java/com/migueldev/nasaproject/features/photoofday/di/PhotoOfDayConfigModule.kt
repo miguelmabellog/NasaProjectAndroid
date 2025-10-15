@@ -16,14 +16,13 @@ import javax.inject.Singleton
 object PhotoOfDayConfigModule {
     
     /**
-     * Provide NASA API key for the Photo of Day feature
-     * This will be provided by the app module
+     * Provide NASA API key from BuildConfig
+     * Reads from local.properties: llave-personalizada
      */
     @Provides
     @Singleton
     @NasaApiKey
     fun provideNasaApiKey(): String {
-        // This will be overridden by the app module
-        return "DEMO_KEY"
+        return com.migueldev.nasaproject.features.photoofday.BuildConfig.NASA_API_KEY
     }
 }

@@ -77,7 +77,7 @@ dependencies {
     
     // Feature modules
     implementation(project(":feature-photo-of-day"))
-    // implementation(project(":feature-asteroids"))
+    implementation(project(":feature-asteroids"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -91,6 +91,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.coil.compose)
     implementation(libs.dagger.hilt.android)
+    implementation(project(":feature-asteroids"))
     kapt(libs.dagger.hilt.compiler)
     
     testImplementation(libs.junit)

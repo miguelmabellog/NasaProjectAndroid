@@ -17,6 +17,13 @@ interface NasaApiService {
         @Query("start_date") startDate: String,
         @Query("end_date") endDate: String? = null
     ): List<NasaResponseDto>
+    
+    @GET("neo/rest/v1/feed")
+    suspend fun getAsteroidsFeed(
+        @Query("api_key") apiKey: String,
+        @Query("start_date") startDate: String,
+        @Query("end_date") endDate: String
+    ): com.google.gson.JsonObject
 }
 
 

@@ -1,5 +1,7 @@
 package com.migueldev.nasaproject.core.network
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.migueldev.nasaproject.core.network.api.NasaApiService
 import dagger.Module
 import dagger.Provides
@@ -17,6 +19,12 @@ object NetworkModule {
     
     @Provides
     @Singleton
+    fun provideGson(): Gson = GsonBuilder()
+        .setLenient()
+        .create()
+    
+    @Provides
+    @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
@@ -31,11 +39,11 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit =
+    fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .baseUrl("https://api.nasa.gov/")
-            .client(provideOkHttpClient())
-            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
     @Provides

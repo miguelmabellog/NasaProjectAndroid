@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun MenuScreen(
     onNavigateToPhotoOfDay: () -> Unit,
+    onNavigateToAsteroids: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -60,6 +61,21 @@ fun MenuScreen(
             ) {
                 Text(
                     text = "Foto del Día",
+                    color = Color.White,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Medium
+                )
+            }
+            
+            Button(
+                onClick = onNavigateToAsteroids,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFE31E24)
+                ),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = "Asteroids",
                     color = Color.White,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Medium

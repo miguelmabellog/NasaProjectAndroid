@@ -59,6 +59,14 @@ dependencies {
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
     
+    // Gson for JSON parsing
+    implementation(libs.retrofit2.converter.gson)
+    // Retrofit for API calls
+    implementation(libs.retrofit2)
+    
+    // Gson annotation processing for DTOs
+    compileOnly("com.google.code.gson:gson:2.10.1")
+    
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

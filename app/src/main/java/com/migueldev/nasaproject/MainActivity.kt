@@ -9,13 +9,20 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.migueldev.nasaproject.navigation.Screen
 import com.migueldev.nasaproject.presentation.MenuScreen
 import com.migueldev.nasaproject.features.photoofday.presentation.ui.PhotoOfDayScreen
 import com.migueldev.nasaproject.features.photoofday.presentation.ui.DetailScreen
+import com.migueldev.nasaproject.features.asteroids.menu.presentation.ui.AsteroidsMenuScreen
+import com.migueldev.nasaproject.features.asteroids.todays.presentation.ui.TodaysAsteroidsScreen
+import com.migueldev.nasaproject.features.asteroids.todays.presentation.ui.TodaysAsteroidDetailScreen
+import com.migueldev.nasaproject.features.asteroids.hazardous.presentation.ui.HazardousAsteroidsScreen
+import com.migueldev.nasaproject.features.asteroids.hazardous.presentation.ui.HazardousAsteroidDetailScreen
 import com.migueldev.nasaproject.ui.theme.NasaProjectTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,6 +56,9 @@ fun NasaApp() {
             MenuScreen(
                 onNavigateToPhotoOfDay = {
                     navController.navigate(Screen.PhotoOfDay.route)
+                },
+                onNavigateToAsteroids = {
+                    navController.navigate(Screen.Asteroids.route)
                 }
             )
         }
@@ -68,6 +78,63 @@ fun NasaApp() {
             val itemId = backStackEntry.arguments?.getString("itemId") ?: ""
             DetailScreen(
                 itemId = itemId,
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        // Navegación a Asteroids feature - Menu
+        composable(Screen.Asteroids.route) {
+            AsteroidsMenuScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToUpcomingAsteroids = {
+                    navController.navigate(Screen.AsteroidsTodays.route)
+                },
+                onNavigateToHazardousAsteroids = {
+                    navController.navigate(Screen.AsteroidsHazardous.route)
+                }
+            )
+        }
+        
+        // Navegación a Today's Asteroids
+        composable(Screen.AsteroidsTodays.route) {
+            TodaysAsteroidsScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToDetail = { asteroidId ->
+                    navController.navigate(Screen.AsteroidDetailTodays.createRoute(asteroidId))
+                }
+            )
+        }
+        
+        // Navegación a Today's Asteroid Detail
+        composable(
+            route = Screen.AsteroidDetailTodays.route,
+            arguments = listOf(navArgument("asteroidId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val asteroidId = backStackEntry.arguments?.getString("asteroidId") ?: ""
+            TodaysAsteroidDetailScreen(
+                asteroidId = asteroidId,
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        // Navegación a Hazardous Asteroids
+        composable(Screen.AsteroidsHazardous.route) {
+            HazardousAsteroidsScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToDetail = { asteroidId ->
+                    navController.navigate(Screen.AsteroidDetailHazardous.createRoute(asteroidId))
+                }
+            )
+        }
+        
+        // Navegación a Hazardous Asteroid Detail
+        composable(
+            route = Screen.AsteroidDetailHazardous.route,
+            arguments = listOf(navArgument("asteroidId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val asteroidId = backStackEntry.arguments?.getString("asteroidId") ?: ""
+            HazardousAsteroidDetailScreen(
+                asteroidId = asteroidId,
                 onNavigateBack = { navController.popBackStack() }
             )
         }
