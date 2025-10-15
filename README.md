@@ -10,8 +10,28 @@ Practice: Kotlin corutines, hillt DI, Modularization <br>
 
 
 ## main feature
-Nasa Project based on api https://api.nasa.gov/<br> 
-show image of day<br>
+This app is based on https://api.nasa.gov/
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>Show image of day</strong><br>
+      <img src="images/Adobe Express - fotodeldia.gif" width="200">
+    </td>
+    <td align="center">
+      <strong>Hazerdous asteroids</strong><br>
+      <img src="images/Adobe Express - hazerdous.gif" width="200">
+    </td>
+    <td align="center">
+      <strong>Today asteroid</strong><br>
+      <img src="images/Adobe Express - todayasteroid.gif" width="200">
+    </td>
+  </tr>
+</table>
+
+
+
+
 show close astheroids<br>
 
 ## thechnology
