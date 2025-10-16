@@ -17,14 +17,14 @@ val apiKey = localProperties.getProperty("llave-personalizada") ?: "DEMO_KEY"
 
 android {
     namespace = "com.migueldev.nasaproject.features.photoofday"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 26
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-        
+
         // Add API key to BuildConfig
         buildConfigField("String", "NASA_API_KEY", "\"$apiKey\"")
     }
@@ -39,11 +39,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "19"
     }
     buildFeatures {
         compose = true

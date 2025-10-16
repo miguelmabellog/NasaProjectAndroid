@@ -2,37 +2,21 @@ package com.migueldev.nasaproject.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.migueldev.nasaproject.core.common.preferences.AppPreferences
+import com.migueldev.nasaproject.core.common.preferences.DataStoreManager
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
 class MenuViewModel @Inject constructor(
-    private val appPreferences: AppPreferences
+  dataStoreManager: DataStoreManager
 ) : ViewModel() {
-    
-    private val _userName = MutableStateFlow("")
-    val userName: StateFlow<String> = _userName.asStateFlow()
-    
-    init {
-        loadUserName()
-    }
-    
-    private fun loadUserName() {
-        viewModelScope.launch {
-            // Cargar el nombre desde SharedPreferences
-            // Esto demuestra la limitación: no se actualiza automáticamente
-            val savedName = appPreferences.userName
-            _userName.value = savedName
-        }
-    }
-    
-    // Método para refrescar manualmente (para demostrar la diferencia con DataStore)
-    fun refreshUserName() {
-        loadUserName()
-    }
+
+  val userName = dataStoreManager.userName
+    .stateIn(
+      scope = viewModelScope,
+      started = SharingStarted.WhileSubscribed(5000),
+      initialValue = "No name set"
+    )
 }

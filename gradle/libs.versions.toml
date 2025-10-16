@@ -1,5 +1,7 @@
 [versions]
-agp = "8.5.2"
+agp = "8.13.0"
+datastorePreferences = "1.1.7"
+javaxInject = "1"
 kotlin = "1.9.25"
 coreKtx = "1.12.0"
 junit = "4.13.2"
@@ -11,6 +13,7 @@ composeBom = "2024.02.01"
 hilt = "2.51.1"
 hiltNavigationCompose = "1.2.0"
 hiltTesting = "2.51.1"
+lifecycleViewmodelCompose = "2.9.4"
 navigationCompose = "2.7.7"
 coil = "2.6.0"
 retrofit = "2.11.0"
@@ -21,6 +24,9 @@ room = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
+javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
