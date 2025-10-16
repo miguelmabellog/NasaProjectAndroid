@@ -23,6 +23,7 @@ import com.migueldev.nasaproject.features.asteroids.todays.presentation.ui.Today
 import com.migueldev.nasaproject.features.asteroids.todays.presentation.ui.TodaysAsteroidDetailScreen
 import com.migueldev.nasaproject.features.asteroids.hazardous.presentation.ui.HazardousAsteroidsScreen
 import com.migueldev.nasaproject.features.asteroids.hazardous.presentation.ui.HazardousAsteroidDetailScreen
+import com.migueldev.nasaproject.preferences.PreferencesScreen
 import com.migueldev.nasaproject.ui.theme.NasaProjectTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -59,6 +60,9 @@ fun NasaApp() {
                 },
                 onNavigateToAsteroids = {
                     navController.navigate(Screen.Asteroids.route)
+                },
+                onNavigateToPreferences = {
+                    navController.navigate(Screen.Preferences.route)
                 }
             )
         }
@@ -135,6 +139,13 @@ fun NasaApp() {
             val asteroidId = backStackEntry.arguments?.getString("asteroidId") ?: ""
             HazardousAsteroidDetailScreen(
                 asteroidId = asteroidId,
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        // Navegación a Preferences
+        composable(Screen.Preferences.route) {
+            PreferencesScreen(
                 onNavigateBack = { navController.popBackStack() }
             )
         }

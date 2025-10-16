@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.hilt.android)
+    kotlin("kapt")
 }
 
 android {
@@ -36,6 +38,10 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.coroutines.android)
     implementation("javax.inject:javax.inject:1")
+    
+    // Hilt dependencies
+    implementation(libs.dagger.hilt.android)
+    kapt(libs.dagger.hilt.compiler)
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

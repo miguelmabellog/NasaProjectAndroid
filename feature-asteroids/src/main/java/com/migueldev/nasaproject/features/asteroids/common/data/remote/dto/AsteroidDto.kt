@@ -19,3 +19,4 @@ data class AsteroidDto(
     val closeApproachData: List<CloseApproachDataDto>
 )
 
+

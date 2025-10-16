@@ -4,6 +4,7 @@ sealed class Screen(val route: String) {
     object Menu : Screen("menu")
     object PhotoOfDay : Screen("photo_of_day")
     object Asteroids : Screen("asteroids")
+    object Preferences : Screen("preferences")
     object AsteroidsTodays : Screen("asteroids/todays")
     object AsteroidsHazardous : Screen("asteroids/hazardous")
     object AsteroidDetailTodays : Screen("asteroids/todays/detail/{asteroidId}") {

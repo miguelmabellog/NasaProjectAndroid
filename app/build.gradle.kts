@@ -91,7 +91,6 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.coil.compose)
     implementation(libs.dagger.hilt.android)
-    implementation(project(":feature-asteroids"))
     kapt(libs.dagger.hilt.compiler)
     
     testImplementation(libs.junit)

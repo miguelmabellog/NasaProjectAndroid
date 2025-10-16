@@ -9,3 +9,4 @@ data class NeoFeedResponseDto(
     val nearEarthObjects: Map<String, List<AsteroidDto>>
 )
 
+

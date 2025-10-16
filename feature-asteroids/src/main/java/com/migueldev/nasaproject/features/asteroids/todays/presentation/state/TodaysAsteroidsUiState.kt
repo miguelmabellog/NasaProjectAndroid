@@ -8,3 +8,4 @@ sealed interface TodaysAsteroidsUiState {
     data class Error(val message: String) : TodaysAsteroidsUiState
 }
 
+
