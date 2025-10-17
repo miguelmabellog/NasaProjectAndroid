@@ -2,6 +2,7 @@ package com.migueldev.nasaproject.features.photoofday.di
 
 import com.migueldev.nasaproject.features.photoofday.data.repository.PhotoOfDayRepositoryImpl
 import com.migueldev.nasaproject.features.photoofday.data.source.PhotoOfDayRemoteDataSource
+import com.migueldev.nasaproject.features.photoofday.data.source.impl.PhotoOfDayRemoteDataSourceImpl
 import com.migueldev.nasaproject.features.photoofday.domain.repository.PhotoOfDayRepository
 import dagger.Binds
 import dagger.Module
@@ -16,13 +17,20 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class PhotoOfDayModule {
-    
-    /**
-     * Bind PhotoOfDayRepository implementation
-     */
-    @Binds
-    @Singleton
-    abstract fun bindPhotoOfDayRepository(
-        photoOfDayRepositoryImpl: PhotoOfDayRepositoryImpl
-    ): PhotoOfDayRepository
+
+  /**
+   * Bind PhotoOfDayRepository implementation
+   */
+  @Binds
+  @Singleton
+  abstract fun bindPhotoOfDayRepository(
+    photoOfDayRepositoryImpl: PhotoOfDayRepositoryImpl
+  ): PhotoOfDayRepository
+
+
+  @Binds
+  @Singleton
+  abstract fun bindPhotoOfDayRemoteDataSource(
+    photoOfDayRemoteDataSourceImpl: PhotoOfDayRemoteDataSourceImpl
+  ): PhotoOfDayRemoteDataSource
 }

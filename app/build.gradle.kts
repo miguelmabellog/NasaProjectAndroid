@@ -17,12 +17,12 @@ val apiKey = localProperties.getProperty("llave-personalizada") ?: "DEMO_KEY"
 
 android {
     namespace = "com.migueldev.nasaproject"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.migueldev.nasaproject"
-        minSdk = 24
-        targetSdk = 34
+        minSdk = 26
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -45,11 +45,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "19"
     }
     buildFeatures {
         compose = true
