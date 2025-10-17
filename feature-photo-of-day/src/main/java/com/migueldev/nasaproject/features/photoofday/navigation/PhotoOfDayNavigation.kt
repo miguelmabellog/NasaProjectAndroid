@@ -10,7 +10,7 @@ import com.migueldev.nasaproject.features.photoofday.presentation.ui.PhotoOfDayS
  * This exposes the UI screens to the app module
  */
 object PhotoOfDayNavigation {
-    
+
     @Composable
     fun PhotoOfDayScreen(
         onNavigateBack: () -> Unit,
@@ -28,12 +28,12 @@ object PhotoOfDayNavigation {
     fun DetailScreen(
         itemId: String,
         onNavigateBack: () -> Unit,
-        modifier: Modifier = Modifier
+//        modifier: Modifier = Modifier
     ) {
         com.migueldev.nasaproject.features.photoofday.presentation.ui.DetailScreen(
             itemId = itemId,
             onNavigateBack = onNavigateBack,
-            modifier = modifier
+            // modifier = modifier
         )
     }
 }

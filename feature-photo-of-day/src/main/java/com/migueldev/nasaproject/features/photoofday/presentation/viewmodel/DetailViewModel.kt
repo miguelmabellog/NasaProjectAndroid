@@ -1,5 +1,7 @@
 package com.migueldev.nasaproject.features.photoofday.presentation.viewmodel
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.migueldev.nasaproject.features.photoofday.domain.usecase.GetItemByDateUseCase
@@ -24,8 +26,10 @@ class DetailViewModel @Inject constructor(
     private val _state = MutableStateFlow<DetailState>(DetailState.Loading)
     val state: StateFlow<DetailState> = _state.asStateFlow()
     
+    @RequiresApi(Build.VERSION_CODES.O)
     private val dateFormatter = DateTimeFormatter.ISO_LOCAL_DATE
     
+    @RequiresApi(Build.VERSION_CODES.O)
     fun loadItemByDate(date: String) {
         viewModelScope.launch {
             _state.value = DetailState.Loading
